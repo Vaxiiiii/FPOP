@@ -59,6 +59,21 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+        <h4 className="font-bold mb-4 text-center text-2xl">Our Partners</h4>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <img src={`${import.meta.env.BASE_URL}AHF.png`} alt="AHF Logo" className="h-26" />
+          </div>
+          <div>
+            <img src={`${import.meta.env.BASE_URL}AJUWAN.png`} alt="AJUWAN Logo" className="h-25" />
+          </div>
+          <div>
+            <img src={`${import.meta.env.BASE_URL}AUSTRALIANAID.png`} alt="Australian Aid Logo" className="h-25" />
+          </div>
+          <div>
+            <img src={`${import.meta.env.BASE_URL}IPPF.png`} alt="IPPF Logo" className="h-25" />
+          </div>
+        </div>
         <div className="mt-8 pt-8 border-t border-gray-200 text-sm text-center">
           <p>&copy; {currentYear} Family Planning Organization of The Philippines. All rights reserved.</p>
         </div>

@@ -12,18 +12,19 @@ import Profile from './pages/Profile'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/FPOP">
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/chat" element={<AIChat />} />
-            <Route path="/appointment" element={<BookAppointment />} />
-            <Route path="/volunteers" element={<Volunteers />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route index element={<Home />} />
+            <Route path="home" element={<Home />} />
+            <Route path="resources" element={<Resources />} />
+            <Route path="chat" element={<AIChat />} />
+            <Route path="appointment" element={<BookAppointment />} />
+            <Route path="volunteers" element={<Volunteers />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="profile" element={<Profile />} />
           </Routes>
         </main>
         <Footer />
