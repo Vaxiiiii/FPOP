@@ -1,4 +1,4 @@
-// src/components/MonthlyCalendar.jsx
+
 import React, { useState } from 'react'
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isToday } from 'date-fns'
 

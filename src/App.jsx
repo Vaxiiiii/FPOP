@@ -8,14 +8,13 @@ import AIChat from './pages/AIChat'
 import BookAppointment from './pages/BookAppointment'
 import Volunteers from './pages/Volunteers'
 import Settings from './pages/Settings'
-import Profile from './pages/Profile'
 
 function App() {
   return (
     <Router basename="/FPOP">
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow ">
           <Routes>
             <Route index element={<Home />} />
             <Route path="home" element={<Home />} />
@@ -24,7 +23,6 @@ function App() {
             <Route path="appointment" element={<BookAppointment />} />
             <Route path="volunteers" element={<Volunteers />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="profile" element={<Profile />} />
           </Routes>
         </main>
         <Footer />
