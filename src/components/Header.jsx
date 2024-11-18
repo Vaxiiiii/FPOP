@@ -55,6 +55,11 @@ export default function Header() {
         </nav>
         
         <div className="flex items-center space-x-4"> 
+          <Link to="/youth" className="text-black hover:text-black hover:border-b-2 border-black transition-colors font-bold rounded-full bg-[#ffce54] border-2 py-1 px-2">
+            Youth Section
+          </Link>
+
+
           {/* Notification dropdown */}
           <div className="relative" ref={notificationDropdownRef}>
             <div 
