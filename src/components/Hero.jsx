@@ -21,13 +21,27 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000) // Change slide every 5 seconds
+    }, 5000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [slides.length])
+
+  const handleMouseEnter = () => {
+    clearInterval(timer)
+  }
+
+  const handleMouseLeave = () => {
+    timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000)
+  }
 
   return (
-    <section className="bg-gray-100 py-40 relative">
+    <section 
+      className="bg-gray-100 py-40 relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="container mx-auto px-4 text-center">
         <div className="relative">
           {slides.map((slide, index) => (

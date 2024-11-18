@@ -1,15 +1,40 @@
-
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isToday } from 'date-fns'
-
-const events = [
-  { date: new Date(2024, 10, 5), title: 'Sexual Health Workshop' },
-  { date: new Date(2024, 10, 12), title: 'Free HIV Testing Day' },
-  { date: new Date(2024, 10, 20), title: 'LGBTQ+ Support Group' },
-]
 
 export default function MonthlyCalendar() {
   const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    // Function to fetch events for the current month
+    const fetchEvents = async () => {
+      try {
+        // Here you would typically fetch from your API
+        // const response = await api.get(`/events/${format(currentMonth, 'yyyy-MM')}`)
+        // setEvents(response.data)
+
+        // Temporary mock data
+        setEvents([
+          {
+            date: new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 5),
+            title: 'Sexual Health Workshop'
+          },
+          {
+            date: new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 12),
+            title: 'Free HIV Testing Day'
+          },
+          {
+            date: new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 20),
+            title: 'LGBTQ+ Support Group'
+          },
+        ])
+      } catch (error) {
+        console.error('Error fetching events:', error)
+      }
+    }
+
+    fetchEvents()
+  }, [currentMonth]) // Re-fetch when month changes
 
   const monthStart = startOfMonth(currentMonth)
   const monthEnd = endOfMonth(monthStart)

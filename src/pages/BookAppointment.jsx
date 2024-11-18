@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast } from 'react-hot-toast'
 
 export default function BookAppointment() {
   const [formData, setFormData] = useState({
@@ -7,6 +8,7 @@ export default function BookAppointment() {
     date: '',
     time: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -16,12 +18,25 @@ export default function BookAppointment() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log('Appointment booked:', formData)
-    // Reset form after submission
-    setFormData({ name: '', email: '', date: '', time: '' })
+    setIsSubmitting(true)
+
+    try {
+      // Here you would typically send the form data to your backend
+      // const response = await api.post('/appointments', formData)
+      
+      // Simulate API call for now
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      toast.success('Appointment booked successfully!')
+      setFormData({ name: '', email: '', date: '', time: '' })
+    } catch (error) {
+      toast.error('Failed to book appointment. Please try again.')
+      console.error('Appointment booking error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -76,7 +91,15 @@ export default function BookAppointment() {
             className="w-full p-2 border rounded"
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">Book Appointment</button>
+        <button 
+          type="submit" 
+          disabled={isSubmitting}
+          className={`w-full p-2 text-white rounded ${
+            isSubmitting ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
+          }`}
+        >
+          {isSubmitting ? 'Booking...' : 'Book Appointment'}
+        </button>
       </form>
     </div>
   )
